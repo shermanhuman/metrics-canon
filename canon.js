@@ -1,10 +1,22 @@
 // canon.js - quick and dirty log generator
+const fs = require('fs');
 
-var pino = require("pino")()
+function timestamp(){
+    return Math.floor(Date.now());
+} 
 
+function logmetric(message) {
+    logentry = '{"time":' + timestamp() + ',"msg":' + message + '}';
+    fs.appendFile("/persistent/app-metrics.log", logentry + '\n', function (err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log("Wrote heartbeat to file: " + logentry);
+    });
+}
 
 function heartbeat() {
-    pino.info('Thump.');
- }
+    logmetric('{"hearbeat":"Bump."}');
+}
 
- setInterval(heartbeat, 1*1000); // do this every second
+setInterval(heartbeat, 1 * 1000); // do this every second
