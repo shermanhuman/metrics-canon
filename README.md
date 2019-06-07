@@ -1,5 +1,8 @@
 # metrics-cannon
 
+## Description
+A quick and dirty project to generate JSON logs in order to test filebeat.
+
 ## Run locally
 Run on your local workstation:
 ```
