@@ -1,0 +1,15 @@
+{
+  "name": "metrics-cannon",
+  "version": "0.0.1",
+  "description": "A metrics log generator for testing filebeats.",
+  "main": "canon.js",
+  "engines": {
+    "node": "10.16"
+  },
+  "scripts": {
+    "start": "node canon.js > /persistent/app-metrics.log"
+  },
+  "dependencies": {
+    "pino": "^5.12.6"
+  }
+}
