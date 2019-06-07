@@ -1,12 +1,14 @@
 // canon.js - quick and dirty log generator
 const fs = require('fs');
+var os = require("os");
+var hostname = os.hostname();
 
 function timestamp(){
     return Math.floor(Date.now());
 } 
 
 function logmetric(message) {
-    logentry = '{"time":' + timestamp() + ',"msg":' + message + '}';
+    logentry = '{"time":' + timestamp() + ',"hostname":"' + hostname + '","msg":' + message + '}';
     fs.appendFile("/persistent/app-metrics.log", logentry + '\n', function (err) {
         if (err) {
             return console.log(err);
