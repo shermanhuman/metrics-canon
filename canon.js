@@ -13,7 +13,9 @@ function logmetric(message) {
         if (err) {
             return console.log(err);
         }
-        console.log("Wrote heartbeat to file: " + logentry);
+        if (process.env.NODE_ENV !== 'production') {
+                console.log("Wrote heartbeat to file: " + logentry);
+          }
     });
 }
 
